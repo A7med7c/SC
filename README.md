@@ -1,36 +1,38 @@
 ```mermaid
-useCaseDiagram
-    actor "Customer" as C
-    actor "Admin" as A
-    
-    package "Event Planning System" {
+flowchart LR
+    %% Actors
+    C([Customer])
+    A([Admin])
+
+    %% Event Planning System
+    subgraph EPS[Event Planning System]
         %% Account Management
-        usecase "Register & Log In" as UC1
-        usecase "Manage Profile" as UC2
-        
+        UC1([Register & Log In])
+        UC2([Manage Profile])
+
         %% Event Planning & Booking
-        usecase "Select Event Category" as UC3
-        usecase "Search & Select Venue" as UC4
-        usecase "Customize Budget & Package" as UC5
-        usecase "Book Event" as UC6
-        usecase "Make Payment" as UC7
-        usecase "Modify Booking" as UC8
-        usecase "Track Booking Status" as UC9
-        
+        UC3([Select Event Category])
+        UC4([Search & Select Venue])
+        UC5([Customize Budget & Package])
+        UC6([Book Event])
+        UC7([Make Payment])
+        UC8([Modify Booking])
+        UC9([Track Booking Status])
+
         %% Social & Communication
-        usecase "Invite Guests" as UC10
-        usecase "Rate Venue / Add to Favorites" as UC11
-        usecase "Submit Complaint / Feedback" as UC12
-        usecase "Request Offline Meeting" as UC13
-        usecase "Chat with Bot / Support" as UC14
-        
+        UC10([Invite Guests])
+        UC11([Rate Venue / Add to Favorites])
+        UC12([Submit Complaint / Feedback])
+        UC13([Request Offline Meeting])
+        UC14([Chat with Bot / Support])
+
         %% Admin Functions
-        usecase "Manage Venues" as UC15
-        usecase "Manage Packages & Budgets" as UC16
-        usecase "Manage Bookings" as UC17
-        usecase "Track Payments" as UC18
-        usecase "Respond to Complaints" as UC19
-    }
+        UC15([Manage Venues])
+        UC16([Manage Packages & Budgets])
+        UC17([Manage Bookings])
+        UC18([Track Payments])
+        UC19([Respond to Complaints])
+    end
 
     %% Customer Relationships
     C --> UC1
@@ -56,9 +58,9 @@ useCaseDiagram
     A --> UC18
     A --> UC19
     A --> UC13
-    
+
     %% Relationships between Use Cases (Includes/Extends)
-    UC6 ..> UC7 : <<include>>
-    UC4 ..> UC3 : <<include>>
-    UC15 ..> UC1 : <<include>>
+    UC6 -.->|include| UC7
+    UC4 -.->|include| UC3
+    UC15 -.->|include| UC1
 ```
