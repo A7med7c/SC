@@ -1,52 +1,62 @@
-```mermaid
-usecaseDiagram
-    actor "Guest" as G
-    actor "Registered User" as U
-    actor "Event Planner" as P
-    actor "Administrator" as A
-
+useCaseDiagram
+    actor "Customer" as C
+    actor "Admin" as A
+    
     package "Event Planning System" {
-        usecase "Register" as UC1
-        usecase "Login" as UC2
-        usecase "Search for Events" as UC3
-        usecase "View Event Details" as UC4
-        usecase "Book Ticket / Reserve" as UC5
-        usecase "Make Payment" as UC6
-        usecase "Cancel Reservation" as UC7
-        usecase "Create New Event" as UC8
-        usecase "Update/Delete Event" as UC9
-        usecase "View Booking Status" as UC10
-        usecase "Manage Users" as UC11
-        usecase "Generate Reports" as UC12
-        usecase "Provide Feedback" as UC13
+        %% Account Management
+        usecase "Register & Log In" as UC1
+        usecase "Manage Profile" as UC2
+        
+        %% Event Planning & Booking
+        usecase "Select Event Category" as UC3
+        usecase "Search & Select Venue" as UC4
+        usecase "Customize Budget & Package" as UC5
+        usecase "Book Event" as UC6
+        usecase "Make Payment" as UC7
+        usecase "Modify Booking" as UC8
+        usecase "Track Booking Status" as UC9
+        
+        %% Social & Communication
+        usecase "Invite Guests" as UC10
+        usecase "Rate Venue / Add to Favorites" as UC11
+        usecase "Submit Complaint / Feedback" as UC12
+        usecase "Request Offline Meeting" as UC13
+        usecase "Chat with Bot / Support" as UC14
+        
+        %% Admin Functions
+        usecase "Manage Venues" as UC15
+        usecase "Manage Packages & Budgets" as UC16
+        usecase "Manage Bookings" as UC17
+        usecase "Track Payments" as UC18
+        usecase "Respond to Complaints" as UC19
     }
 
-    %% Guest Relationships
-    G --> UC1
-    G --> UC3
-    G --> UC4
+    %% Customer Relationships
+    C --> UC1
+    C --> UC2
+    C --> UC3
+    C --> UC4
+    C --> UC5
+    C --> UC6
+    C --> UC7
+    C --> UC8
+    C --> UC9
+    C --> UC10
+    C --> UC11
+    C --> UC12
+    C --> UC13
+    C --> UC14
 
-    %% User Relationships
-    U --> UC2
-    U --> UC3
-    U --> UC4
-    U --> UC5
-    U --> UC7
-    U --> UC13
-
-    %% Event Planner Relationships
-    P --> UC2
-    P --> UC8
-    P --> UC9
-    P --> UC10
-
-    %% Administrator Relationships
-    A --> UC2
-    A --> UC11
-    A --> UC12
-
-    %% Includes and Extends
-    UC5 ..> UC6 : <<include>>
-    UC5 ..> UC2 : <<include>>
-    UC8 ..> UC2 : <<include>>
-```
+    %% Admin Relationships
+    A --> UC1
+    A --> UC15
+    A --> UC16
+    A --> UC17
+    A --> UC18
+    A --> UC19
+    A --> UC13
+    
+    %% Relationships between Use Cases (Includes/Extends)
+    UC6 ..> UC7 : <<include>>
+    UC4 ..> UC3 : <<include>>
+    UC15 ..> UC1 : <<include>>
