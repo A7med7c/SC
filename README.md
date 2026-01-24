@@ -1,3 +1,4 @@
+```mermaid
 useCaseDiagram
     actor "Customer" as C
     actor "Admin" as A
@@ -60,3 +61,4 @@ useCaseDiagram
     UC6 ..> UC7 : <<include>>
     UC4 ..> UC3 : <<include>>
     UC15 ..> UC1 : <<include>>
+```
